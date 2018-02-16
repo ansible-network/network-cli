@@ -1,0 +1,19 @@
+---
+- name: check for required fact ansible_network_os
+  fail:
+    msg: missing required variable ansible_network_os
+  when: ansible_network_os is undefined
+
+- name: run command on remote network node
+  cli_get:
+    command: "{{ command }}"
+  register: command_output
+
+- name: set the contents fact
+  set_fact:
+    contents: "{{ command_output.stdout }}"
+
+- name: parse output and return facts
+  include_tasks: parse.yaml
+  when: parser is defined
+

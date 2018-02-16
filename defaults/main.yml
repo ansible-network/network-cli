@@ -1,0 +1,4 @@
+---
+# defaults file for network-cli
+parser_path: "{{ playbook_dir }}/parsers/{{ ansible_network_os }}"
+
