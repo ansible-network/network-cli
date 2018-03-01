@@ -1,23 +1,18 @@
 ---
-- name: check for required fact ansible_network_os
+- name: validate the ansible_network_os variable
   fail:
     msg: "missing required fact: ansible_network_os"
   when: ansible_network_os is undefined
 
-- name: check for required fact contents
+- name: validate the parser_engine variable
+  fail:
+    msg: "invalid option for parser_engine"
+  when: parser_engine is defined and parser_engine not in ['text_parser', 'textfsm']
+
+- name: validate the contents variable
   fail:
     msg: "missing required fact: contents"
   when: contents is undefined
 
-- name: parse cli output and return facts
-  text_parser:
-    file: "{{ filename }}"
-    contents: "{{ contents }}"
-  with_first_found:
-    - files: "{{ parser }}.yaml"
-      paths:
-        - "{{ parser_path }}"
-        - "/etc/ansible/network/parsers/{{ ansible_network_os }}"
-      skip: no
-  loop_control:
-    loop_var: filename
+- name: run parser tasks
+  include_tasks: "{{role_path }}/includes/{{ parser_engine | default('text_parser') }}.yaml"

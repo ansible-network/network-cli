@@ -1,0 +1,13 @@
+---
+- name: parse cli output and return facts using text_parser
+  text_parser:
+    file: "{{ filename }}"
+    contents: "{{ contents }}"
+  with_first_found:
+    - files: "{{ parser }}.yaml"
+      paths:
+        - "{{ parser_path }}"
+        - "/etc/ansible/network/parsers/{{ ansible_network_os }}"
+      skip: no
+  loop_control:
+    loop_var: filename
