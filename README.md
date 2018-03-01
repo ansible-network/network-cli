@@ -35,41 +35,7 @@ None
 ## Dependencies
 The following is the list of dependencies on other roles this role requires.
 
-None
-
-## Example Playbook
-To use the modules and plugins found in this role, simply include this role
-in the desired playbook or add this role to another roles dependencies.
-
-There are a set of predefined parsers available at http://github.com/ansible-network/parsers
-
-```
-vars:
-  commands:
-    eos:
-      command: show interfaces | json
-      parser: show_interfaces_json
-    ios:
-      command: show interfaces
-      parser: show_interfaces
-
-tasks:
-  - name: run command and return parsed output
-    include_role:
-      name: network-cli
-      tasks_from: run
-    vars:
-      parser: "{{ commands[ansible_network_os].parser }}"
-      command: "{{ commands[ansible_network_os].command }}"
-
-  - name: parse output and return facts
-    include_role:
-      name: network-cli
-      tasks_from: parse
-    vars:
-      parser: show_interface
-      contents: "{{ lookup('file', 'output/show_interface.txt') }}"
-```
+* [network-engine](http://github.com/ansible-network/network-engine)
 
 ## License
 GPLv3

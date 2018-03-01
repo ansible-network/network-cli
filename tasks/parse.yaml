@@ -1,12 +1,17 @@
 ---
 - name: check for required fact ansible_network_os
   fail:
-    msg: missing required variable ansible_network_os
+    msg: "missing required fact: ansible_network_os"
   when: ansible_network_os is undefined
+
+- name: check for required fact contents
+  fail:
+    msg: "missing required fact: contents"
+  when: contents is undefined
 
 - name: parse cli output and return facts
   text_parser:
-    src: "{{ filename }}"
+    file: "{{ filename }}"
     contents: "{{ contents }}"
   with_first_found:
     - files: "{{ parser }}.yaml"

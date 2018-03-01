@@ -1,5 +1,5 @@
 # Task run
-The ```run``` task provides an implementaiton for running CLI commands on
+The ```run``` task provides an implementation for running CLI commands on
 network devices that is platform agnostic.  The ```run``` task accepts a
 command and will attempt to execute that command on the remote device returning
 the command ouput.  

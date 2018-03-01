@@ -1,4 +1,4 @@
-# Task parser
+# Task parse
 The ```parser``` task will take the output from a command that has been
 previously executed on a remote network device and transform it into JSON data
 that can be stored as facts for the host.
@@ -8,12 +8,11 @@ parser file that defines which values to extract from the output and how to
 assign them to fact keys.  The parser language accepts a number of directives
 that can be used to control how data is extracted and assigned to keys.  
 
-The parser directives are documented [here](parser_directives.md)
-
 ## Requirements
 The following is the list of requirements for using the this task:
 
-None
+* Ansible 2.5 or later
+* Connection ```network_cli```
 
 ## Operation
 
