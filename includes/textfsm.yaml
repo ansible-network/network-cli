@@ -1,6 +1,7 @@
 ---
 - name: parse cli output and return facts using textfsm
   textfsm:
-    file: "{{ parser }}"
+    src: "{{ src | default(omit) }}"
+    file: "{{ parser | default(omit) }}"
     contents: "{{ contents }}"
     name: "{{ fact_name | default(omit) }}"
