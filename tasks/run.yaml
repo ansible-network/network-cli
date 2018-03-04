@@ -1,4 +1,9 @@
 ---
+- name: validate connection is network_cli
+  fail:
+    msg: "expected connection network_cli, got {{ ansible_connection }}"
+  when: ansible_connection != 'network_cli'
+
 - name: check for required fact ansible_network_os
   fail:
     msg: "missing required fact: ansible_network_os"
@@ -11,7 +16,7 @@
 
 - name: set contents fact
   set_fact:
-    contents: "{{ command.output }}"
+    contents: "{{ command.stdout }}"
 
 - name: parse output and return facts
   include_tasks: parse.yaml
