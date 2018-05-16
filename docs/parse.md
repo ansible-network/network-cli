@@ -64,7 +64,7 @@ The parser file contains the set of rules used to parse the ```content``` and
 return JSON data.
 
 ### content
-The ```content``` arugment is a required argument.  It provides the data that
+The ```content``` argument is a required argument.  It provides the data that
 is parsed in order to generate the JSON data based on the rules in the parser
 file.
 
