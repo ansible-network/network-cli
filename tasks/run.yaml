@@ -14,9 +14,9 @@
     command: "{{ command }}"
   register: command
 
-- name: set contents fact
+- name: set content fact
   set_fact:
-    contents: "{{ command.stdout }}"
+    content: "{{ command.stdout }}"
 
 - name: parse output and return facts
   include_tasks: parse.yaml

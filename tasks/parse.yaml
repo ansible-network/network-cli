@@ -9,10 +9,10 @@
     msg: "invalid option for parser_engine"
   when: parser_engine is defined and parser_engine not in ['text_parser', 'textfsm']
 
-- name: validate the contents variable
+- name: validate the content variable
   fail:
-    msg: "missing required fact: contents"
-  when: contents is undefined
+    msg: "missing required fact: content"
+  when: content is undefined
 
 - name: run parser tasks
   include_tasks: "{{role_path }}/includes/{{ parser_engine | default('text_parser') }}.yaml"

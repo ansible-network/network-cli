@@ -3,5 +3,5 @@
   textfsm:
     src: "{{ src | default(omit) }}"
     file: "{{ parser | default(omit) }}"
-    contents: "{{ contents }}"
+    content: "{{ content }}"
     name: "{{ fact_name | default(omit) }}"
