@@ -7,5 +7,5 @@
 - name: parse cli output and return facts using text_parser
   text_parser:
     file: "{{ filename }}"
-    contents: "{{ contents }}"
+    content: "{{ content }}"
     name: "{{ fact_name | default(omit) }}"

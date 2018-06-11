@@ -6,11 +6,11 @@ that can be stored as facts for the host.
 The ```parse``` task performs the parsing based on a set of rules defined in a
 parser file that defines which values to extract from the output and how to
 assign them to fact keys.  The parser language accepts a number of directives
-that can be used to control how data is extracted and assigned to keys.  
+that can be used to control how data is extracted and assigned to keys.
 
 ## How to parse the output of a command
 The basic function of this role is to pass the output of the show command
-through a parser to transform the text into another format.  
+through a parser to transform the text into another format.
 
 ```
 ---
@@ -22,7 +22,7 @@ through a parser to transform the text into another format.
         tasks_from: parse
       vars:
         parser: files/show_version.yaml
-        contents: "{{ lookup('file', 'output/ios/show_version.txt') }}"
+        content: "{{ lookup('file', 'output/ios/show_version.txt') }}"
 ```
 
 ## How to use TextFSM as the parsing engine
@@ -42,7 +42,7 @@ For example:
         tasks_from: parse
       vars:
         parser: files/show_version.yaml
-        contents: "{{ lookup('file', 'output/ios/show_version.txt') }}"
+        content: "{{ lookup('file', 'output/ios/show_version.txt') }}"
         parser_engine: textfsm
 ```
 
@@ -60,11 +60,11 @@ task.
 
 ### parser
 The ```parser``` argument is required and defines the path to the parser file.
-The parser file contains the set of rules used to parse the ```contents``` and
+The parser file contains the set of rules used to parse the ```content``` and
 return JSON data.
 
-### contents
-The ```contents``` arugment is a required argument.  It provides the data that
+### content
+The ```content``` argument is a required argument.  It provides the data that
 is parsed in order to generate the JSON data based on the rules in the parser
 file.
 
